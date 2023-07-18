@@ -1,0 +1,4 @@
+{
+  "version": 2,
+  "routes": [{ "src": "/(.*)", "dest": "https://gyh7.notion.site/b68e00d147d341a5bfeb81037878cb59" }]
+}
