@@ -17,10 +17,12 @@ const PAGE_TITLE = "yh's blog"
 const PAGE_DESCRIPTION = ''
 
 /* Step 4: enter a Google Font name, you can choose from https://fonts.google.com */
-const GOOGLE_FONT = 'Rubik'
+const GOOGLE_FONT = ''
 
 /* Step 5: enter any custom scripts you'd like */
 const CUSTOM_SCRIPT = ``
+
+const CUSTOM_NOTION_NAME = 'gyh7.notion.site'
 
 /* CONFIGURATION ENDS HERE */
 
@@ -76,7 +78,7 @@ async function fetchAndApply(request) {
     return handleOptions(request)
   }
   let url = new URL(request.url)
-  url.hostname = 'www.notion.so'
+  url.hostname = CUSTOM_NOTION_NAME
   if (url.pathname === '/robots.txt') {
     return new Response('Sitemap: https://' + MY_DOMAIN + '/sitemap.xml')
   }
