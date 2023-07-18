@@ -91,7 +91,7 @@ async function fetchAndApply(request) {
   if (url.pathname.startsWith('/app') && url.pathname.endsWith('js')) {
     response = await fetch(url.toString())
     let body = await response.text()
-    response = new Response(body.replace(/gyh7.notion.site/g, MY_DOMAIN), response)
+    response = new Response(body.replace(/www.notion.so/g, MY_DOMAIN), response)
     response.headers.set('Content-Type', 'application/x-javascript')
     return response
   } else if (url.pathname.startsWith('/api')) {
@@ -221,12 +221,12 @@ class BodyRewriter {
       function onDark() {
         el.innerHTML = '<div title="Change to Light Mode" style="margin-left: auto; margin-right: 14px; min-width: 0px;"><div role="button" tabindex="0" style="user-select: none; transition: background 120ms ease-in 0s; cursor: pointer; border-radius: 44px;"><div style="display: flex; flex-shrink: 0; height: 14px; width: 26px; border-radius: 44px; padding: 2px; box-sizing: content-box; background: rgb(46, 170, 220); transition: background 200ms ease 0s, box-shadow 200ms ease 0s;"><div style="width: 14px; height: 14px; border-radius: 44px; background: white; transition: transform 200ms ease-out 0s, background 200ms ease-out 0s; transform: translateX(12px) translateY(0px);"></div></div></div></div>';
         document.body.classList.add('dark');
-        localStorage.setItem("LRU:KeyValueStore2:appearanceSettingStorageKey", {"id":"KeyValueStore2:appearanceSettingStorageKey","value":"dark","important":true});
+        localStorage.setItem("LRU:KeyValueStore2:appearanceSettingStorageKey", '{"id":"KeyValueStore2:appearanceSettingStorageKey","value":"dark","important":true}');
       };
       function onLight() {
         el.innerHTML = '<div title="Change to Dark Mode" style="margin-left: auto; margin-right: 14px; min-width: 0px;"><div role="button" tabindex="0" style="user-select: none; transition: background 120ms ease-in 0s; cursor: pointer; border-radius: 44px;"><div style="display: flex; flex-shrink: 0; height: 14px; width: 26px; border-radius: 44px; padding: 2px; box-sizing: content-box; background: rgba(135, 131, 120, 0.3); transition: background 200ms ease 0s, box-shadow 200ms ease 0s;"><div style="width: 14px; height: 14px; border-radius: 44px; background: white; transition: transform 200ms ease-out 0s, background 200ms ease-out 0s; transform: translateX(0px) translateY(0px);"></div></div></div></div>';
         document.body.classList.remove('dark');
-        localStorage.setItem("LRU:KeyValueStore2:appearanceSettingStorageKey", {"id":"KeyValueStore2:appearanceSettingStorageKey","value":"light","important":true});
+        localStorage.setItem("LRU:KeyValueStore2:appearanceSettingStorageKey", '{"id":"KeyValueStore2:appearanceSettingStorageKey","value":"light","important":true}');
       }
       function toggle() {
         if (document.body.classList.contains('dark')) {
