@@ -91,7 +91,7 @@ async function fetchAndApply(request) {
   if (url.pathname.startsWith('/app') && url.pathname.endsWith('js')) {
     response = await fetch(url.toString())
     let body = await response.text()
-    response = new Response(body.replace(/gyh7.notion.site/g, MY_DOMAIN).replace(/notion.so/g, MY_DOMAIN), response)
+    response = new Response(body.replace(/gyh7.notion.site/g, MY_DOMAIN), response)
     response.headers.set('Content-Type', 'application/x-javascript')
     return response
   } else if (url.pathname.startsWith('/api')) {
