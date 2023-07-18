@@ -295,7 +295,7 @@ class BodyRewriter {
       };
       const open = window.XMLHttpRequest.prototype.open;
       window.XMLHttpRequest.prototype.open = function() {
-        arguments[1] = arguments[1].replace('${MY_DOMAIN}', ${CUSTOM_NOTION_NAME});
+        arguments[1] = arguments[1].replace('${MY_DOMAIN}', '${CUSTOM_NOTION_NAME}');
         return open.apply(this, [].slice.call(arguments));
       };
     </script>${CUSTOM_SCRIPT}`,
