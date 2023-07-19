@@ -247,6 +247,8 @@ class BodyRewriter {
         const nav = device === 'web' ? document.querySelector('.notion-topbar').firstChild : document.querySelector('.notion-topbar-mobile');
         el.className = 'toggle-mode';
         el.addEventListener('click', toggle);
+        // remove try notion button
+        nav.removeNode(nav.lastChild)
         nav.appendChild(el);
 
         // enable smart dark mode based on user-preference
