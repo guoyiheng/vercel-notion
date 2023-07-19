@@ -248,7 +248,7 @@ class BodyRewriter {
         el.className = 'toggle-mode';
         el.addEventListener('click', toggle);
         // remove try notion button
-        nav.removeNode(nav.lastChild)
+        nav.removeChild(nav.lastChild)
         nav.appendChild(el);
 
         // enable smart dark mode based on user-preference

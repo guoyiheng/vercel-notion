@@ -4,5 +4,5 @@
 
 ## TODO
 
-- [ ] https://github.com/stephenou/fruitionsite/issues/234
-- [ ] delete try notion
+- [x] https://github.com/stephenou/fruitionsite/issues/234
+- [x] delete try notion
