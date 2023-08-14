@@ -224,6 +224,7 @@ class BodyRewriter {
           window.location.reload();
         } else {
           __console.environment.ThemeStore.setState({ mode: mode });
+          localStorage.setItem('newTheme', JSON.stringify({ mode: mode }));
         }
       }
       function onDark() {
@@ -244,24 +245,36 @@ class BodyRewriter {
         }
       }
       function addDarkModeButton(device) {
-        const nav = device === 'web' ? document.querySelector('.notion-topbar').firstChild : document.querySelector('.notion-topbar-mobile');
-        el.className = 'toggle-mode';
-        el.addEventListener('click', toggle);
-        const timeout = device === 'web' ? 0 : 500;
+        const nav =
+          device === 'web'
+            ? document.querySelector('.notion-topbar').firstChild
+            : document.querySelector('.notion-topbar-mobile')
+        el.className = 'toggle-mode'
+        el.addEventListener('click', toggle)
+        const timeout = device === 'web' ? 0 : 500
         setTimeout(() => {
-          nav.appendChild(el);
+          nav.appendChild(el)
         }, timeout)
-        // enable smart dark mode based on user-preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            onDark();
+        // get the current theme and add the toggle to represent that theme
+        const currentTheme = JSON.parse(localStorage.getItem('newTheme'))?.mode
+        if (currentTheme) {
+          if (currentTheme === 'dark') {
+            onDark()
+          }else{
+            onLight()
+          }
         } else {
-            onLight();
+          // enable smart dark mode based on user-preference
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            onDark()
+          } else {
+            onLight()
+          }
         }
-
         // try to detect if user-preference change
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            toggle();
-        });
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          toggle()
+        })
       }
       const observer = new MutationObserver(function() {
         if (redirected) return;
